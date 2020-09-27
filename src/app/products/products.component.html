@@ -1,0 +1,58 @@
+<!-- <div class="row" *ngIf="products">
+  <div *ngFor="let p of products._embedded.products">
+
+    <div class="col-md-3">
+
+
+      <div class="card">
+        <div class="card-heading">
+          {{p.name}}
+        </div>
+        <div class="card-body">
+          <table>
+            <tr>
+              <td>
+                <img src="" alt="">
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+</div> -->
+
+<div class="row mt-5">
+  <div *ngFor="let p of products?._embedded.products" class="col-md-6 mb-3">
+
+    <div class="card">
+      <div class="card-header">
+        {{p.name}}
+
+      </div>
+      <div class="card-body">
+        <table>
+          <tr>
+            <td colspan="2">
+              <img src="{{url+p.id}}" alt="">
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>{{p.currentPrice | number: '0.2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>{{p.description}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
