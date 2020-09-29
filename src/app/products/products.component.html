@@ -26,8 +26,9 @@
 
 
 </div> -->
+<h2 class="mt-4">{{title}}</h2>
+<div class="row mt-1">
 
-<div class="row mt-5">
   <div *ngFor="let p of products?._embedded.products" class="col-md-6 mb-3">
 
     <div class="card">
@@ -36,21 +37,26 @@
 
       </div>
       <div class="card-body">
-        <table>
-          <tr>
-            <td colspan="2">
-              <img src="{{url+p.id}}" alt="">
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>{{p.currentPrice | number: '0.2'}}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>{{p.description}}</td>
-          </tr>
-        </table>
+        <div>
+          <img src="{{url+p.id + '?timestamp=' + timestamp }}" id="image" alt="">
+        </div>
+        <div class="mt-2">
+          <button class="btn btn-primary" (click)="onEditPhoto(p)">
+            edit photo
+          </button>
+        </div>
+        <div *ngIf="editPhoto==true && currentProduct == p" class="mt-2">
+          <input type="file" (change)="onSelectedFile($event)">
+          <button class="btn btn-success" (click)="uploadPhoto()">Upload</button>
+
+        </div>
+        <div class="mt-2">
+          Price : {{p.currentPrice | number: '0.2'}}
+        </div>
+        <div class="mt-2">
+          Description : {{p.description}}
+        </div>
+
       </div>
     </div>
   </div>
